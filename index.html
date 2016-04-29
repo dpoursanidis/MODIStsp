@@ -55,81 +55,65 @@
 <a id="installation-" class="anchor" href="#installation-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation <a name="Installation"></a>
 </h2>
 
-<p><strong>IMPORTANT:</strong> <em>MODIStsp</em> requires <a href="http://www.gdal.org/">GDAL</a> (Geospatial Data Abstraction Library) v &gt;1.11.1 To be installed in your system. Brief instructions for installing GDAL on Windows can be found <a href="#gdal_inst">HERE</a></p>
+<p><strong>IMPORTANT:</strong> <em>MODIStsp</em> requires <a href="http://cran.r-project.org">R</a> v ≥ 3.2.1 and <a href="http://www.gdal.org">GDAL</a> (Geospatial Data Abstraction Library) v ≥ 1.11.1 To be installed in your system. Brief instructions for installing R and GDAL can be found <a href="#gdal_inst">HERE</a>.</p>
 
-<h2>
-<a id="on-windows" class="anchor" href="#on-windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Windows</h2>
-
-<ol>
-<li>Install and load the <code>gWidgetsRGtk2</code> package:</li>
-</ol>
-
-<div class="highlight highlight-source-r"><pre>  install.packages(<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>)
-  library(<span class="pl-smi">gWidgetsRGtk2</span>)</pre></div>
-
-<p>upon loading the package, an error window will probably appear. <strong>Don’t worry !</strong> This is just signaling that  <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library “GTK+” is not yet installed on your system and needs to be installed. To do so, press “OK”. A new window dialog window will appear, asking if you want to install “GTK+”. Select “Install GTK+” and then “OK”. Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go !<sup id="a1"><a href="#f1">1</a></sup></p>
-
-<ol>
-<li>Install MODIStsp package from GitHub. (You'll need to have the "devtools" package installed and loaded)</li>
-</ol>
-
-<div class="highlight highlight-source-r"><pre>  install.packages(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>, <span class="pl-v">repos</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>http://cran.us.r-project.org<span class="pl-pds">"</span></span>)
-  library(<span class="pl-smi">devtools</span>)
-  install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
-
-<h2>
-<a id="on-linux" class="anchor" href="#on-linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Linux</h2>
+<h3>
+<a id="on-windows" class="anchor" href="#on-windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Windows</h3>
 
 <ol>
 <li>
-<p>Ensure that R &gt;= 3.2.1 and GDAL &gt;= 1.11.1 are installed.</p>
+<p>Install and load the <code>gWidgetsRGtk2</code> package:</p>
 
-<p>With Ubuntu 15.04 Vivid (or older) and Debian Jessie (or older) it is necessary to install packages from CRAN and UbuntuGIS-unstable repositories (follow instructions <a href="https://cran.r-project.org/bin/linux/ubuntu">here</a> and <a href="https://launchpad.net/%7Eubuntugis/+archive/ubuntu/ubuntugis-unstable">here</a>); with Ubuntu 15.10 Wily (and newer) this step is not mandatory (altough recommended).</p>
+<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>)
+library(<span class="pl-smi">gWidgetsRGtk2</span>)</pre></div>
 
-<p>On Debian-based systems, to install packages open a terminal and type </p>
+<p>Upon loading the package, an error window will probably appear. <strong>Don’t worry!</strong> This is just signaling that  <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library “GTK+” is not yet installed on your system and needs to be installed. To do so, press “OK”. A new window dialog window will appear, asking if you want to install “GTK+”. Select “Install GTK+” and then “OK”. Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go!<sup id="a1"><a href="#f1">1</a></sup></p>
+</li>
+<li>
+<p>Install MODIStsp package from GitHub. (You'll need to have the "devtools" package installed and loaded)</p>
+
+<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>)
+library(<span class="pl-smi">devtools</span>)
+install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
 </li>
 </ol>
 
-<div class="highlight highlight-source-shell"><pre>  sudo apt-get install r-base gdal-bin</pre></div>
+<h3>
+<a id="on-linux-systems" class="anchor" href="#on-linux-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Linux systems</h3>
 
 <ol>
 <li>
-<p>Install the dependencies requested by MODIStsp package and relative package dependencies: </p>
+<p>Install the requested dependencies: </p>
 
 <ul>
-<li>Cairo &gt;= 1.0.0, ATK &gt;= 1.10.0, Pango &gt;= 1.10.0, GTK+ &gt;= 2.8.0, GLib &gt;= 2.8.0 (requested from library <code>RGtk2</code>)</li>
+<li>Cairo ≥ 1.0.0, ATK ≥ 1.10.0, Pango ≥ 1.10.0, GTK+ ≥ 2.8.0, GLib ≥ 2.8.0 (requested from library <code>RGtk2</code>)</li>
 <li>Curl (requested from library <code>curl</code>)</li>
-<li>GDAL &gt;= 1.6.3, PROJ.4  &gt;= 4.4.9 (requested from library <code>rgdal</code>)</li>
+<li>GDAL ≥ 1.6.3, PROJ.4  ≥ 4.4.9 (requested from library <code>rgdal</code>)</li>
 </ul>
 
-<p>On Debian-based systems, to install packages open a terminal and type </p>
+<p>On Debian and Ubuntu-based systems, to install packages open a terminal and type  </p>
+
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install r-cran-cairodevice r-cran-rgtk2 libcurl4-openssl-dev libgdal-dev libproj-dev</pre></div>
+</li>
+<li>
+<p>From R install the libraries <code>gWidgetsRGtk2</code> and <code>devtools</code>:</p>
+
+<div class="highlight highlight-source-r"><pre>install.packages(c(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>))</pre></div>
+</li>
+<li>
+<p>Install MODIStsp package from GitHub (you'll need to have the "devtools" package loaded): </p>
+
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">devtools</span>)
+install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
 </li>
 </ol>
-
-<div class="highlight highlight-source-shell"><pre>  sudo apt-get install r-cran-cairodevice r-cran-rgtk2 libcurl4-openssl-dev libgdal-dev libproj-dev</pre></div>
-
-<ol>
-<li>From R install the libraries <code>gWidgetsRGtk2</code> and <code>devtools</code>:</li>
-</ol>
-
-<div class="highlight highlight-source-r"><pre> install.packages(<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>, <span class="pl-v">repos</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>http://cran.us.r-project.org<span class="pl-pds">"</span></span>)
- install.packages(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>, <span class="pl-v">repos</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>http://cran.us.r-project.org<span class="pl-pds">"</span></span>)
- library(<span class="pl-smi">devtools</span>)</pre></div>
-
-<ol>
-<li>Install <code>MODIStsp</code> package from GitHub:</li>
-</ol>
-
-<div class="highlight highlight-source-r"><pre> library(<span class="pl-smi">devtools</span>)
- install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
 
 <h2>
 <a id="dependencies-" class="anchor" href="#dependencies-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies <a name="Dependencies"></a>
 </h2>
 
-<p>MODIStsp exploits functionalities of several other "R" packages. In particular, the following packages are imported:</p>
-
-<p><code>bitops (&gt;= 1.9.6)</code>, <code>data.table (&gt;= 1.9.6)</code> , <code>gdalUtils (&gt;= 2.0.1.7)</code>, <code>gWidgetsRGtk2 (&gt;= 0.0-54)</code>, <code>hash (&gt;= 2.2.6)</code>, <code>plyr (&gt;= 1.8.3)</code>, <code>raster (&gt;= 2.5-2)</code>, <code>RCurl (&gt;= 1.95-4.8)</code>, <code>rgdal (&gt;= 1.1-8)</code>, <code>rgeos (&gt;= 0.3-8)</code>, <code>xts (&gt;= 1.0-10)</code>, <code>sp (&gt;= 1.2-2)</code>, <code>stringr (&gt;= 1.0.0)</code>, <code>XML (&gt;= 3.98-1.1)</code></p>
+<p>MODIStsp exploits functionalities of several other "R" packages. In particular, the following packages are imported:<br>
+<code>bitops</code> (≥ 1.9.6), <code>data.table</code> (≥ 1.9.6), <code>gdalUtils</code> (≥ 2.0.1.7), <code>gWidgetsRGtk2</code> (≥ 0.0-54), <code>hash</code> (≥ 2.2.6), <code>plyr</code> (≥ 1.8.3), <code>raster</code> (≥ 2.5-2), <code>RCurl</code> (≥ 1.95-4.8), <code>rgdal</code> (≥ 1.1-8), <code>rgeos</code> (≥ 0.3-8), <code>xts</code> (≥ 1.0-10), <code>sp</code> (≥ 1.2-2), <code>stringr</code> (≥ 1.0.0), <code>XML</code> (≥ 3.98-1.1).</p>
 
 <h2>
 <a id="running-the-tool-" class="anchor" href="#running-the-tool-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running the tool <a name="Running"></a>
@@ -215,8 +199,30 @@ See <code>?install_MODIStsp_launcher</code> for details and path customisations.
 
 <p><a name="gdal_inst"></a></p>
 
-<h1>
-<a id="installing-gdal-on-windows" class="anchor" href="#installing-gdal-on-windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing GDAL on Windows</h1>
+<h2>
+<a id="installing-r-and-gdal" class="anchor" href="#installing-r-and-gdal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing R and GDAL</h2>
+
+<h3>
+<a id="installing-r" class="anchor" href="#installing-r" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing R</h3>
+
+<h4>
+<a id="windows" class="anchor" href="#windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h4>
+
+<p>Download and install the latest version of R which can be found <a href="https://cran.r-project.org/bin/windows/base">here</a>.</p>
+
+<h4>
+<a id="linux" class="anchor" href="#linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Linux</h4>
+
+<p>Please refer to the documentation which can be found <a href="https://cran.r-project.org/bin/linux">here</a>, opening the directory relative to the user Linux distribution. The documentation provides instruction to add CRAN repositories and to install the latest R version.
+With Ubuntu 15.10 Wily (and newer) this step is not mandatory (altough recommended), since packaged version of R is ≥ 3.2.1 (although not the latest); in this case, user can insall R by simply typing in a terminal</p>
+
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install r-base</pre></div>
+
+<h3>
+<a id="installing-gdal--1111" class="anchor" href="#installing-gdal--1111" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing GDAL ≥ 1.11.1</h3>
+
+<h4>
+<a id="windows-1" class="anchor" href="#windows-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h4>
 
 <p>The easiest way to install GDAL on Windows is from the <a href="https://trac.osgeo.org/osgeo4w/">OSGeo4W Website</a></p>
 
@@ -245,7 +251,34 @@ See <code>?install_MODIStsp_launcher</code> for details and path customisations.
 </li>
 </ol>
 
-<p><b id="f1">1</b> If you encounter problems installing the <code>gWidgetsRgtk2</code> library, please signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of MODIStsp and we'll try to help you ! <a href="#a1">↩</a></p>
+<h4>
+<a id="debiam-and-ubuntu-based-systems" class="anchor" href="#debiam-and-ubuntu-based-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Debiam and Ubuntu-based systems</h4>
+
+<ol>
+<li><p>Ensure that your repositories contains a version of <code>gdal-bin</code> ≥ 1.11.1. 
+In particular, official repositories of Ubuntu 15.04 Vivid (or older) and Debian Jessie (or older) provide older versions of GDAL, so it is necessary to add UbuntuGIS-unstable repository before installing. To do it, follow instructions <a href="https://launchpad.net/%7Eubuntugis/+archive/ubuntu/ubuntugis-unstable">here</a>). 
+With Ubuntu 15.10 Wily (and newer) this step is not mandatory, altough recommended in order to have updated version of GDAL installed.</p></li>
+<li>
+<p>To install GDAL a terminal and type  </p>
+
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install gdal-bin</pre></div>
+</li>
+</ol>
+
+<h4>
+<a id="archlinux" class="anchor" href="#archlinux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ArchLinux</h4>
+
+<p>GDAL is maintained updated to the latest version as binary package within the community repository; although that, the support for HDF4 format is not included. 
+To bypass this problem, ArchLinux users can install <code>gdal-hdf4</code> package from AUR (see <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages">here</a> or <a href="https://archlinux.fr/yaourt-en">here</a> for the package installation from AUR). 
+This package is updated manually after each release of <code>gdal</code> on the community repository, a temporal shift between a new <code>gdal</code> release and the update of <code>gdal-hdf4</code> could happen.
+The user who wants to manually add the support for HDF4 in case <code>gdal-hdf4</code> is out-of-date can do it following <a href="https://notehub.org/fctdn">these instructions</a>.</p>
+
+<h4>
+<a id="other-linux-systems" class="anchor" href="#other-linux-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other Linux systems</h4>
+
+<p>Install the packaged binary of GDAL included in your specific distribution; if the version is older than 1.11.1, or if the support for HDF4 format is not included, the user probably must manually install HDF4 library and compile the source code (to do it, add the parameter <code>--with-hdf4</code> to <code>configure</code> instruction).</p>
+
+<p><b id="f1">1</b> If you encounter problems installing the <code>gWidgetsRgtk2</code> library, please signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of MODIStsp and we'll try to help you! <a href="#a1">↩</a></p>
         </section>
 
         <footer>
