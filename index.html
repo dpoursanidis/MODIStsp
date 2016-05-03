@@ -31,7 +31,8 @@
         <hr>
 
         <section id="main_content">
-          <p><a href="https://travis-ci.org/lbusett/MODIStsp"><img src="https://travis-ci.org/lbusett/MODIStsp.svg?branch=devel" alt="Travis-CI Build Status"></a></p>
+          <p><a href="https://travis-ci.org/lbusett/MODIStsp"><img src="https://travis-ci.org/lbusett/MODIStsp.svg?branch=devel" alt="Travis-CI Build Status"></a>
+<img src="https://img.shields.io/github/release/lbusett/MODIStsp.svg" alt="version"></p>
 
 <h1>
 <a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Table of contents</h1>
@@ -40,7 +41,8 @@
 <li><a href="#MODIStsp">MODIStsp</a></li>
 <li><a href="#Installation">Installation</a></li>
 <li><a href="#Dependencies">Dependencies</a></li>
-<li><a href="#Running">Running the Tools</a></li>
+<li><a href="#Running">Running the Tool</a></li>
+<li><a href="#gdal_inst">Install R and GDAL</a></li>
 </ol>
 
 <h1>
@@ -55,7 +57,7 @@
 <a id="installation-" class="anchor" href="#installation-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation <a name="Installation"></a>
 </h2>
 
-<p><strong>IMPORTANT:</strong> <em>MODIStsp</em> requires <a href="http://cran.r-project.org">R</a> v ≥ 3.2.1 and <a href="http://www.gdal.org">GDAL</a> (Geospatial Data Abstraction Library) v ≥ 1.11.1 To be installed in your system. Brief instructions for installing R and GDAL can be found <a href="#gdal_inst">HERE</a>.</p>
+<p><strong>IMPORTANT:</strong> <em>MODIStsp</em> requires <a href="http://cran.r-project.org">R</a> v &gt;= 3.2.1 and <a href="http://www.gdal.org">GDAL</a> (Geospatial Data Abstraction Library) v &gt;= 1.11.1 To be installed in your system. Brief instructions for installing R and GDAL can be found <a href="#gdal_inst">HERE</a>.</p>
 
 <h3>
 <a id="on-windows" class="anchor" href="#on-windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Windows</h3>
@@ -64,17 +66,19 @@
 <li>
 <p>Install and load the <code>gWidgetsRGtk2</code> package:</p>
 
-<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>)
-library(<span class="pl-smi">gWidgetsRGtk2</span>)</pre></div>
+<pre><code>install.packages("gWidgetsRGtk2")
+library(gWidgetsRGtk2)
+</code></pre>
 
-<p>Upon loading the package, an error window will probably appear. <strong>Don’t worry!</strong> This is just signaling that  <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library “GTK+” is not yet installed on your system and needs to be installed. To do so, press “OK”. A new window dialog window will appear, asking if you want to install “GTK+”. Select “Install GTK+” and then “OK”. Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go!<sup id="a1"><a href="#f1">1</a></sup></p>
+<p>Upon loading the package, an error window will probably appear. <strong>Don’t worry!</strong> This is just signaling that  <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library “GTK+” is not yet installed on your system and needs to be installed. To do so, press “OK”. A new window dialog window will appear, asking if you want to install “GTK+”. Select “Install GTK+” and then “OK”. Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go!<sup name="a1"><a href="#f1">1</a></sup></p>
 </li>
 <li>
 <p>Install MODIStsp package from GitHub. (You'll need to have the "devtools" package installed and loaded)</p>
 
-<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>)
-library(<span class="pl-smi">devtools</span>)
-install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
+<pre><code>install.packages("devtools")
+library(devtools)
+install_github("lbusett/MODIStsp")
+</code></pre>
 </li>
 </ol>
 
@@ -83,12 +87,12 @@ install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<
 
 <ol>
 <li>
-<p>Install the requested dependencies: </p>
+<p>Install the following required dependencies: </p>
 
 <ul>
-<li>Cairo ≥ 1.0.0, ATK ≥ 1.10.0, Pango ≥ 1.10.0, GTK+ ≥ 2.8.0, GLib ≥ 2.8.0 (requested from library <code>RGtk2</code>)</li>
-<li>Curl (requested from library <code>curl</code>)</li>
-<li>GDAL ≥ 1.6.3, PROJ.4  ≥ 4.4.9 (requested from library <code>rgdal</code>)</li>
+<li>Cairo &gt;= 1.0.0, ATK &gt;= 1.10.0, Pango &gt;= 1.10.0, GTK+ &gt;= 2.8.0, GLib &gt;= 2.8.0 (required by package <code>RGtk2</code>)</li>
+<li>Curl (required by package <code>curl</code>)</li>
+<li>GDAL &gt;= 1.6.3, PROJ.4 &gt;= 4.4.9 (required by package <code>rgdal</code>)</li>
 </ul>
 
 <p>On Debian and Ubuntu-based systems, to install packages open a terminal and type  </p>
@@ -98,13 +102,15 @@ install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<
 <li>
 <p>From R install the libraries <code>gWidgetsRGtk2</code> and <code>devtools</code>:</p>
 
-<div class="highlight highlight-source-r"><pre>install.packages(c(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>))</pre></div>
+<pre><code>install.packages(c("devtools","gWidgetsRGtk2"))
+</code></pre>
 </li>
 <li>
 <p>Install MODIStsp package from GitHub (you'll need to have the "devtools" package loaded): </p>
 
-<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">devtools</span>)
-install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
+<pre><code>library(devtools)
+install_github("lbusett/MODIStsp")
+</code></pre>
 </li>
 </ol>
 
@@ -113,7 +119,10 @@ install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<
 </h2>
 
 <p>MODIStsp exploits functionalities of several other "R" packages. In particular, the following packages are imported:<br>
-<code>bitops</code> (≥ 1.9.6), <code>data.table</code> (≥ 1.9.6), <code>gdalUtils</code> (≥ 2.0.1.7), <code>gWidgetsRGtk2</code> (≥ 0.0-54), <code>hash</code> (≥ 2.2.6), <code>plyr</code> (≥ 1.8.3), <code>raster</code> (≥ 2.5-2), <code>RCurl</code> (≥ 1.95-4.8), <code>rgdal</code> (≥ 1.1-8), <code>rgeos</code> (≥ 0.3-8), <code>xts</code> (≥ 1.0-10), <code>sp</code> (≥ 1.2-2), <code>stringr</code> (≥ 1.0.0), <code>XML</code> (≥ 3.98-1.1).</p>
+<code>bitops</code> (&gt;= 1.9.6), <code>data.table</code> (&gt;= 1.9.6), <code>gdalUtils</code> (&gt;= 2.0.1.7), <code>gWidgetsRGtk2</code> (&gt;= 0.0-54), <code>hash</code> (&gt;= 2.2.6), <code>plyr</code> (&gt;= 1.8.3), <code>raster</code> (&gt;= 2.5-2), <code>RCurl</code> (&gt;= 1.95-4.8), <code>rgdal</code> (&gt;= 1.1-8), <code>rgeos</code> (&gt;=0.3-8), <code>xts</code> (&gt;= 1.0-10), <code>sp</code> (&gt;= 1.2-2), <code>stringr</code> (&gt;= 1.0.0), <code>XML</code> (&gt;= 3.98-1.1),</p>
+
+<p>, while the following are suggestes:<br>
+<code>knitr</code>, <code>rmarkdown</code>, <code>png</code>, <code>grid</code>.</p>
 
 <h2>
 <a id="running-the-tool-" class="anchor" href="#running-the-tool-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running the tool <a name="Running"></a>
@@ -127,7 +136,7 @@ install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<
 <div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">MODIStsp</span>)
 MODIStsp()</pre></div>
 
-<p>This will open a GUI from which processing options can be specified and eventually saved (or loaded) (see the package PDF vignette for details)</p>
+<p>This will open a GUI from which processing options can be specified and eventually saved (or loaded) (see the <a href="https://github.com/lbusett/MODIStsp/blob/devel/inst/doc/MODIStsp.pdf">package vignette</a> for details)<sup name="a2"><a href="#f2">2</a></sup></p>
 
 <h3>
 <a id="non-interactive-mode" class="anchor" href="#non-interactive-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Non Interactive mode</h3>
@@ -199,30 +208,30 @@ See <code>?install_MODIStsp_launcher</code> for details and path customisations.
 
 <p><a name="gdal_inst"></a></p>
 
+<h1>
+<a id="installing-r-and-gdal" class="anchor" href="#installing-r-and-gdal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing R and GDAL</h1>
+
 <h2>
-<a id="installing-r-and-gdal" class="anchor" href="#installing-r-and-gdal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing R and GDAL</h2>
+<a id="installing-r" class="anchor" href="#installing-r" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing R</h2>
 
 <h3>
-<a id="installing-r" class="anchor" href="#installing-r" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing R</h3>
-
-<h4>
-<a id="windows" class="anchor" href="#windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h4>
+<a id="windows" class="anchor" href="#windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h3>
 
 <p>Download and install the latest version of R which can be found <a href="https://cran.r-project.org/bin/windows/base">here</a>.</p>
 
-<h4>
-<a id="linux" class="anchor" href="#linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Linux</h4>
+<h3>
+<a id="linux" class="anchor" href="#linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Linux</h3>
 
 <p>Please refer to the documentation which can be found <a href="https://cran.r-project.org/bin/linux">here</a>, opening the directory relative to the user Linux distribution. The documentation provides instruction to add CRAN repositories and to install the latest R version.
-With Ubuntu 15.10 Wily (and newer) this step is not mandatory (altough recommended), since packaged version of R is ≥ 3.2.1 (although not the latest); in this case, user can insall R by simply typing in a terminal</p>
+With Ubuntu 15.10 Wily (and newer) this step is not mandatory (altough recommended), since packaged version of R is &gt;= 3.2.1 (although not the latest); in this case, user can insall R by simply typing in a terminal</p>
 
 <div class="highlight highlight-source-shell"><pre>sudo apt-get install r-base</pre></div>
 
-<h3>
-<a id="installing-gdal--1111" class="anchor" href="#installing-gdal--1111" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing GDAL ≥ 1.11.1</h3>
+<h2>
+<a id="installing-gdal--1111" class="anchor" href="#installing-gdal--1111" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing GDAL &gt;= 1.11.1</h2>
 
-<h4>
-<a id="windows-1" class="anchor" href="#windows-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h4>
+<h3>
+<a id="windows-1" class="anchor" href="#windows-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h3>
 
 <p>The easiest way to install GDAL on Windows is from the <a href="https://trac.osgeo.org/osgeo4w/">OSGeo4W Website</a></p>
 
@@ -235,7 +244,11 @@ With Ubuntu 15.10 Wily (and newer) this step is not mandatory (altough recommend
 <ul>
 <li>
 <em>Easiest Option</em>: 
-+Select <strong>Express Desktop Install</strong>, then proceed with the installation. This will install GDAL and also other useful Spatial Processing softwares like <a href="http://www.qgis.org/">QGIS</a> and <a href="https://grass.osgeo.org/">GRASS GIS</a>
+
+<ul>
+<li> Select <strong>Express Desktop Install</strong>, then proceed with the installation. This will install GDAL and also other useful Spatial Processing softwares like <a href="http://www.qgis.org/">QGIS</a> and <a href="https://grass.osgeo.org/">GRASS GIS</a>
+</li>
+</ul>
 </li>
 <li>
 <em>Advanded Option</em>: 
@@ -251,12 +264,12 @@ With Ubuntu 15.10 Wily (and newer) this step is not mandatory (altough recommend
 </li>
 </ol>
 
-<h4>
-<a id="debiam-and-ubuntu-based-systems" class="anchor" href="#debiam-and-ubuntu-based-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Debiam and Ubuntu-based systems</h4>
+<h3>
+<a id="debian-and-ubuntu-based-systems" class="anchor" href="#debian-and-ubuntu-based-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Debian and Ubuntu-based systems</h3>
 
 <ol>
-<li><p>Ensure that your repositories contains a version of <code>gdal-bin</code> ≥ 1.11.1. 
-In particular, official repositories of Ubuntu 15.04 Vivid (or older) and Debian Jessie (or older) provide older versions of GDAL, so it is necessary to add UbuntuGIS-unstable repository before installing. To do it, follow instructions <a href="https://launchpad.net/%7Eubuntugis/+archive/ubuntu/ubuntugis-unstable">here</a>). 
+<li><p>Ensure that your repositories contain a version of <code>gdal-bin</code> &gt;= 1.11.1. 
+In particular, official repositories of Ubuntu 15.04 Vivid (or older) and Debian Jessie (or older) provide older versions of GDAL, so it is necessary to add UbuntuGIS-unstable repository before installing. To do this, follow instructions <a href="https://launchpad.net/%7Eubuntugis/+archive/ubuntu/ubuntugis-unstable">here</a>). 
 With Ubuntu 15.10 Wily (and newer) this step is not mandatory, altough recommended in order to have updated version of GDAL installed.</p></li>
 <li>
 <p>To install GDAL a terminal and type  </p>
@@ -265,20 +278,25 @@ With Ubuntu 15.10 Wily (and newer) this step is not mandatory, altough recommend
 </li>
 </ol>
 
-<h4>
-<a id="archlinux" class="anchor" href="#archlinux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ArchLinux</h4>
+<h3>
+<a id="archlinux" class="anchor" href="#archlinux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ArchLinux</h3>
 
 <p>GDAL is maintained updated to the latest version as binary package within the community repository; although that, the support for HDF4 format is not included. 
 To bypass this problem, ArchLinux users can install <code>gdal-hdf4</code> package from AUR (see <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages">here</a> or <a href="https://archlinux.fr/yaourt-en">here</a> for the package installation from AUR). 
-This package is updated manually after each release of <code>gdal</code> on the community repository, a temporal shift between a new <code>gdal</code> release and the update of <code>gdal-hdf4</code> could happen.
-The user who wants to manually add the support for HDF4 in case <code>gdal-hdf4</code> is out-of-date can do it following <a href="https://notehub.org/fctdn">these instructions</a>.</p>
+This package is updated manually after each release of <code>gdal</code> on the community repository, so a temporal shift between a new <code>gdal</code> release and the update of <code>gdal-hdf4</code> could happen.
+If you want to manually add the support for HDF4 in case <code>gdal-hdf4</code> is out-of-date, you can do it following <a href="https://notehub.org/fctdn">these instructions</a>.</p>
 
-<h4>
-<a id="other-linux-systems" class="anchor" href="#other-linux-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other Linux systems</h4>
+<h3>
+<a id="other-linux-systems" class="anchor" href="#other-linux-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other Linux systems</h3>
 
-<p>Install the packaged binary of GDAL included in your specific distribution; if the version is older than 1.11.1, or if the support for HDF4 format is not included, the user probably must manually install HDF4 library and compile the source code (to do it, add the parameter <code>--with-hdf4</code> to <code>configure</code> instruction).</p>
+<p>Install the packaged binary of GDAL included in your specific distribution; if the version is older than 1.11.1, or if the support for HDF4 format is not included, you can manually install the HDF4 library and compile the source code by adding the parameter <code>--with-hdf4</code> to the <code>configure</code> instruction).</p>
 
-<p><b id="f1">1</b> If you encounter problems installing the <code>gWidgetsRgtk2</code> library, please signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of MODIStsp and we'll try to help you! <a href="#a1">↩</a></p>
+<p><b id="f1">1</b>: If you encounter problems installing the gWidgetsRgtk2 library, please signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of MODIStsp and we'll try to help you!</p>
+
+<p><b id="f2">2</b>: At the first execution of <em>MODIStsp</em>, a Welcome screen will appear, signaling that MODIStsp is searching for a valid GDAL installation. Press “ok” and wait for GDAL to be found. If nothing happens for a long time (e.g., several minutes), MODIStsp (and in particular the gdalUtils package on which it relies) is not finding a valid GDAL installation in the more common locations. To solve the problem:
+1. Ensure that GDAL is properly installed in your system
+2. (On Windows) If it is installed, verify that GDAL is in your system PATH. and that the <em>GDAL_DATA</em> environment variable is correctly set (You can find simple instructions <a href="http://gisforthought.com/setting-up-your-gdal-and-ogr-environmental-variables/">HERE</a>)
+3. If nothing works, signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of MODIStsp and we'll try to help!</p>
         </section>
 
         <footer>
