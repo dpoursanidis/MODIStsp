@@ -1,40 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
     <title>Modistsp by lbusett</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <section class="page-header">
+      <h1 class="project-name">Modistsp</h1>
+      <h2 class="project-tagline">An &quot;R&quot; package for automatic download and preprocessing of MODIS Land Products Time Series</h2>
+      <a href="https://github.com/lbusett/MODIStsp" class="btn">View on GitHub</a>
+      <a href="https://github.com/lbusett/MODIStsp/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/lbusett/MODIStsp/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <header>
-          <h1>Modistsp</h1>
-          <h2>An &quot;R&quot; package for automatic download and preprocessing of MODIS Land Products Time Series</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/lbusett/MODIStsp/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/lbusett/MODIStsp/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/lbusett/MODIStsp" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <ul>
-<li>  <a href="#news">News !</a>
-</li>
+    <section class="main-content">
+      <ul>
 <li>  <a href="#modistsp">MODIStsp </a><a name="MODIStsp"></a>
+</li>
+<li>  <a href="#news">News !</a>
 </li>
 <li>  <a href="#installation">Installation </a><a name="Installation"></a>
 
@@ -48,7 +36,7 @@
 <li>  <a href="#running-the-tool">Running the tool</a>
 
 <ul>
-<li>  <a href="#interactive-execution">Interactive Execution</a>
+<li>  <a href="#interactive-execution-the-modistsp-gui">Interactive Execution: the MODIStsp GUI</a>
 </li>
 <li>  <a href="#non-interactive-execution-and-scheduled-processing">Non-Interactive Execution and scheduled processing</a>
 </li>
@@ -57,6 +45,8 @@
 <li>  <a href="#output-format-and-naming-conventions">Output format and naming conventions</a>
 </li>
 <li>  <a href="#accessing-and-analyzing-the-processed-time-series-from-r">Accessing and analyzing the processed time series from R</a>
+</li>
+<li>  <a href="#citation">Citation</a>
 </li>
 <li>  <a href="#installing-r-and-gdal">Installing R and GDAL</a>
 
@@ -71,48 +61,7 @@
 
 
 
-<p><a href="https://travis-ci.org/lbusett/MODIStsp"><img src="https://travis-ci.org/lbusett/MODIStsp.svg?branch=master" alt="Travis-CI Build Status"></a> <img src="https://img.shields.io/github/release/lbusett/MODIStsp.svg" alt="version"></p>
-
-<h1>
-<a id="news-" class="anchor" href="#news-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>News !</h1>
-
-<ul>
-<li>  <strong>15/09/2016 - MODIStsp paper published !</strong>
-</li>
-</ul>
-
-<p>An article about MODIStsp was recently published on the "Computers &amp; Geosciences" journal. You can find it <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.020">here</a>. You can cite it as:</p>
-
-<p>L. Busetto, L. Ranghetti (2016) MODIStsp: An R package for automatic preprocessing of MODIS Land Products time series, Computers &amp; Geosciences, Volume 97, Pages 40-48, ISSN 0098-3004, <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.020">http://dx.doi.org/10.1016/j.cageo.2016.08.020</a>.</p>
-
-<ul>
-<li>  *<em>01/09/2016 - MODIS collection 006 *</em>
-</li>
-</ul>
-
-<p>NASA recently switched to provision of Collection 6 datasets for most Land Products. At the moment, MODIStsp stable release only allows download for Collection 5 datasets. If you want to test the download of collection 6 datasets, please use the "devel" branch (follow instructions below; at point 3 use the command <code>install_github("lbusett/MODIStsp", ref="devel")</code>). Note that this is development branch, so do not hexitate to report us any potential problem. <strong>Stable support for Collection 6 will be added in the next MODIStsp release!</strong></p>
-
-<ul>
-<li>  <strong>22/08/2016 - MODIStsp installation problems</strong>
-</li>
-</ul>
-
-<p>There seem to be currently some problems in installing MODIStsp via install_github on R 3.3.1 due to not correct installation of dependencies (a related to a bug in install_github). installing the development version of devtools could solve the issue. To do so, on a clean R/RStudio session try doing:</p>
-
-<p><code>install.packages(c("devtools"))     devtools::install_github("hadley/devtools")     library(devtools)</code> , then continue with standard "MODIStsp" installation.</p>
-
-<p>If it still doesn't work, manually installing all the dependencies should solve the issue. To do so, please try doing:</p>
-
-<p><code>install.packages(c("bitops", "data.table", "gdalUtils", "gWidgets", "hash", "plyr", "raster", "RCurl",       "rgdal", "rgeos", "xts", "XML", "xml2", "sp", "stringr", "httr", "RJSONIO","chron","iterators"))</code> , then continue with standard "MODIStsp" installation.</p>
-
-<p>If you still don't succedd, please contact us !</p>
-
-<ul>
-<li>  *<em>20/07/2016 - Changes in download options *</em>
-</li>
-</ul>
-
-<p>Due to recent changes in rules for accessing NASA LPDAAC data via http, which now requires to specify a username and password, previous versions of MODIStsp will no longer work ! Starting from v.1.2.2, you can specify if downloading data via http or via ftp. In the former case, a valid username and password will have to be specified ! Those can be obtained by registrering an account at the address: <a href="https://urs.earthdata.nasa.gov/profile">https://urs.earthdata.nasa.gov/profile</a>.</p>
+<p><a href="https://travis-ci.org/lbusett/MODIStsp"><img src="https://travis-ci.org/lbusett/MODIStsp.svg?branch=devel" alt="Travis-CI Build Status"></a> <img src="https://img.shields.io/github/release/lbusett/MODIStsp.svg" alt="version"></p>
 
 <h1>
 <a id="modistsp-" class="anchor" href="#modistsp-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MODIStsp <a name="MODIStsp"></a>
@@ -122,34 +71,56 @@
 
 <p>An extended description of MODIStsp functionalities is provided in the <a href="https://github.com/lbusett/MODIStsp/blob/master/inst/doc/MODIStsp.pdf">package vignette</a> (<em>Click on "Raw" at the beginning of the document to download the pdf file</em>)</p>
 
+<p>An article about <code>MODIStsp</code> was also recently published on the "Computers &amp; Geosciences" journal. You can find it <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.020">here</a>.</p>
+
+<p><strong>Solutions to common problems can be found in MODIStsp <a href="https://github.com/lbusett/MODIStsp/wiki/">FAQ</a></strong></p>
+
+<p><strong>Please report any problems in our <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page.</strong></p>
+
+<p><em>MODIStsp is developed and maintained by L.Busetto and L.Ranghetti, from the Institute of Remote Sensing of Environment - National Research Council - Italy (CNR-IREA)</em></p>
+
+<h1>
+<a id="news-" class="anchor" href="#news-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>News !</h1>
+
+<ul>
+<li>  <strong>11/05/2016 - MODIStsp v1.3.0 released, supporting MODIS v006 data</strong>
+</li>
+</ul>
+
+<p>MODIStsp v1.3.0 has been finally released. The major improvement consists in now allowing download and preprocessing of <strong>MODIS Collecction 006 datasets</strong>. Other changes concern improvements in the GUI, introduction of off-line functionality and various bug fixing. You can see the changelog [here]. Please report any issues you may encounter in our <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page.:</p>
+
+<ul>
+<li>  <strong>11/03/2016 - MODIStsp FAQ</strong>
+</li>
+</ul>
+
+<p>Hints for solving common installation, downloading and processing problems are now provided in our <a href="https://github.com/lbusett/MODIStsp/wiki/">FAQ</a> page.</p>
+
 <h1>
 <a id="installation-" class="anchor" href="#installation-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation <a name="Installation"></a>
 </h1>
 
-<p><strong>IMPORTANT:</strong> <em>MODIStsp</em> requires <a href="http://cran.r-project.org">R</a> v &gt;= 3.2.1 and <a href="https://www.gdal.org">GDAL</a> (Geospatial Data Abstraction Library) v &gt;= 1.11.1 To be installed in your system. Brief instructions for installing R and GDAL can be found <a href="#gdal_inst">HERE</a>.</p>
+<p><strong>IMPORTANT:</strong> <em>MODIStsp</em> requires <a href="https://cran.r-project.org">R</a> v &gt;= 3.2.1 and <a href="http://www.gdal.org">GDAL</a> (Geospatial Data Abstraction Library) v &gt;= 1.11.1 To be installed in your system. Brief instructions for installing R and GDAL can be found <a href="#gdal_inst">HERE</a>.</p>
 
 <h3>
 <a id="on-windows" class="anchor" href="#on-windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Windows</h3>
 
 <ol>
-<li>
-<p>Install and load the <code>gWidgetsRGtk2</code> package:</p>
-
-<pre><code>install.packages("gWidgetsRGtk2")
-library(gWidgetsRGtk2)
-</code></pre>
-
-<p>Upon loading the package, an error window will probably appear. <strong>Don’t worry!</strong> This is just signaling that <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library “GTK+” is not yet installed on your system and needs to be installed. To do so, press “OK”. A new window dialog window will appear, asking if you want to install “GTK+”. Select “Install GTK+” and then “OK”. Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go!<sup name="a1"><a href="#f1">1</a></sup></p>
-</li>
-<li>
-<p>Install MODIStsp package from GitHub. (You'll need to have the "devtools" package installed and loaded)</p>
-
-<pre><code>install.packages("devtools")
-library(devtools)
-install_github("lbusett/MODIStsp")
-</code></pre>
-</li>
+<li> Install and load the <code>gWidgetsRGtk2</code> package:</li>
 </ol>
+
+<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>)
+library(<span class="pl-smi">gWidgetsRGtk2</span>)</pre></div>
+
+<p>Upon loading the package, an error window will probably appear. <strong>Don't worry!</strong> This is just signaling that <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library "GTK+ is not yet installed on your system and needs to be installed. To do so, press "OK". A new window dialog window will appear, asking if you want to install "GTK+". Select "Install GTK" and then "OK". Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go!<sup name="a1"><a href="#f1">1</a></sup></p>
+
+<ol>
+<li> Install MODIStsp package from GitHub. (You'll need to have the "devtools" package installed and loaded)</li>
+</ol>
+
+<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>)
+library(<span class="pl-smi">devtools</span>)
+install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
 
 <h3>
 <a id="on-linux-systems" class="anchor" href="#on-linux-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Linux systems</h3>
@@ -164,9 +135,15 @@ install_github("lbusett/MODIStsp")
 <li>  GDAL &gt;= 1.6.3, PROJ.4 &gt;= 4.4.9 (required by package <code>rgdal</code>)</li>
 </ul>
 
-<p>On Debian and Ubuntu-based systems, to install packages open a terminal and type</p>
+<p>On <em>Debian and Ubuntu-based</em> systems, to install packages open a terminal and type</p>
 
-<div class="highlight highlight-source-shell"><pre>sudo apt-get install r-cran-cairodevice r-cran-rgtk2 libcurl4-openssl-dev libgdal-dev libproj-dev</pre></div>
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install r-cran-cairodevice r-cran-rgtk2 libcairo2-dev libatk1.0-dev libpango1.0-dev 
+libgtk2.0-dev libglib2.0-dev libcurl4-openssl-dev libgdal-dev libproj-dev</pre></div>
+
+<p>On <em>rpm-base systems</em>, to install packages open a terminal and type</p>
+
+<div class="highlight highlight-source-shell"><pre>sudo yum install libcairo2-devel libatk1.0-devel libpango1.0-devel gtk2 gtk2-devel 
+glib2-devel libcurl4-devel gdal-devel proj-devel</pre></div>
 </li>
 <li>
 <p>From R install the libraries <code>gWidgetsRGtk2</code> and <code>devtools</code>:</p>
@@ -174,50 +151,41 @@ install_github("lbusett/MODIStsp")
 <pre><code>install.packages(c("devtools","gWidgetsRGtk2"))
 </code></pre>
 </li>
-<li>
-<p>Install MODIStsp package from GitHub (you'll need to have the "devtools" package loaded):</p>
-
-<pre><code>library(devtools)
-install_github("lbusett/MODIStsp")
-</code></pre>
-</li>
+<li><p>Install MODIStsp package from GitHub (you'll need to have the "devtools" package loaded):</p></li>
 </ol>
+
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">devtools</span>)
+install_github(<span class="pl-s"><span class="pl-pds">"</span>lbusett/MODIStsp<span class="pl-pds">"</span></span>)</pre></div>
 
 <h4>
 <a id="dependencies-" class="anchor" href="#dependencies-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies <a name="Dependencies"></a>
 </h4>
 
 <p>MODIStsp exploits functionalities of several other "R" packages. In particular, the following packages are imported:
-<code>bitops</code> (&gt;= 1.9.6), <code>data.table</code> (&gt;= 1.9.6), <code>gdalUtils</code> (&gt;= 2.0.1.7), <code>gWidgetsRGtk2</code> (&gt;= 0.0-54), <code>hash</code> (&gt;= 2.2.6), <code>plyr</code> (&gt;= 1.8.3), <code>raster</code> (&gt;= 2.5-2), <code>RCurl</code> (&gt;= 1.95-4.8), <code>rgdal</code> (&gt;= 1.1-8), <code>rgeos</code> (&gt;=0.3-8), <code>xts</code> (&gt;= 1.0-10), <code>sp</code> (&gt;= 1.2-2), <code>stringr</code> (&gt;= 1.0.0), <code>XML</code> (&gt;= 3.98-1.1), <code>xml2</code> (&gt;= 0.1.2)</p>
+<code>bitops</code> (&gt;= 1.9.6), <code>data.table</code> (&gt;= 1.9.6), <code>gdalUtils</code> (&gt;= 2.0.1.7), <code>gWidgets</code> (&gt;= 0.0-54), <code>hash</code> (&gt;= 2.2.6), <code>plyr</code> (&gt;= 1.8.3), <code>raster</code> (&gt;= 2.5-2), <code>RCurl</code> (&gt;= 1.95-4.8), <code>rgdal</code> (&gt;= 1.1-8), <code>rgeos</code> (&gt;=0.3-8), <code>xts</code> (&gt;= 1.0-10), <code>sp</code> (&gt;= 1.2-2), <code>stringr</code> (&gt;= 1.0.0), <code>XML</code> (&gt;= 3.98-1.1), pacman, <code>xml2</code> (&gt;= 0.1.2), <code>xts</code></p>
 
 <p>, while the following are suggested:
-<code>knitr</code>, <code>rmarkdown</code>, <code>png</code>, <code>grid</code>.</p>
+<code>knitr</code>, <code>rmarkdown</code>, <code>png</code>, <code>grid</code>,<code>gWidgetsRGtk2</code>.</p>
 
 <h1>
 <a id="running-the-tool" class="anchor" href="#running-the-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running the tool</h1>
 
 <h2>
-<a id="interactive-execution" class="anchor" href="#interactive-execution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Interactive Execution</h2>
+<a id="interactive-execution-the-modistsp-gui" class="anchor" href="#interactive-execution-the-modistsp-gui" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Interactive Execution: the MODIStsp GUI</h2>
 
 <p>To run the tool in interactive mode, load the package and launch the <code>MODIStsp</code> function, with no parameters</p>
 
 <div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">MODIStsp</span>)
 MODIStsp()</pre></div>
 
-<p>This will open a GUI from which processing options can be specified and eventually saved (or loaded) (see the <a href="https://github.com/lbusett/MODIStsp/blob/master/inst/doc/MODIStsp.pdf">package vignette</a> for details)<sup name="a2"><a href="#f2">2</a></sup></p>
-
-<h3>
-<a id="selection-of-processing-parameters-" class="anchor" href="#selection-of-processing-parameters-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Selection of processing parameters <a name="Dependencies"></a>
-</h3>
-
-<p>When running MODIStsp in Interactive Mode, a user-friendly GUI allows selection of all processing options required for the creation of the desired MODIS time series. The main available processing options are described in detail in the following.</p>
+<p>This will open a GUI from which processing options can be specified and eventually saved (or loaded) (see below for details). The main available processing options are described in detail in the following.</p>
 
 <p><img src="README-GUI_fig-1.png" alt=""></p>
 
-<h4>
-<a id="modis-product-platform-and-layers" class="anchor" href="#modis-product-platform-and-layers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MODIS Product, Platform and Layers</h4>
+<h3>
+<a id="modis-product-platform-and-layers" class="anchor" href="#modis-product-platform-and-layers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MODIS Product, Platform and Layers</h3>
 
-<p>Allows to select the MODIS product of interest using the <strong>"Category"</strong> and <strong>"Product"</strong> drop down menus. You can also select which <strong>MODIS platform(s)</strong> should be considered for download and creation of the time series ("Terra", "Aqua" or "Both"), and which <strong>version</strong> of the product - 5 or 6 (when available) - should be considered. After selecting the product, pushing the <strong>"Click to Select Desired Layers"</strong> button opens the "Select Processing Layers" GUI panel, from which you <strong>must</strong> select which MODIS original and/or derived QI and SI layers should be processed:</p>
+<p>Allows to select the MODIS product of interest using the <strong>"Category"</strong> and <strong>"Product"</strong> drop down menus. You can also select which <strong>MODIS platform(s)</strong> should be considered for download and creation of the time series ("Terra", "Aqua" or "Both"), and which <strong>version</strong> of the product - 5 or 6 (when available) - should be considered. After selecting the product, pushing the <strong>"Click to Select"</strong> button opens the "Select Processing Layers" GUI panel, from which you <strong>must</strong> select which MODIS original and/or derived QI and SI layers should be processed:</p>
 
 <p><img src="README-select_layers_gui-1.png"></p>
 
@@ -284,21 +252,21 @@ MODIStsp()</pre></div>
 </tbody>
 </table>
 
-<p>You can however <strong>specify other SIs to be computed without modifying MODIStsp source code</strong> by clicking on the <strong><em>"Add Custom Index"</em></strong> button, which allow to provide info related to the new desired SI using a simple GUI interface.</p>
+<p>You can however <strong>specify other SIs to be computed without modifying <code>MODIStsp</code> source code</strong> by clicking on the <strong><em>"Add Custom Index"</em></strong> button, which allow to provide info related to the new desired SI using a simple GUI interface.</p>
 
 <p><img src="README-index_fig-1.png"></p>
 
-<p>Provided information (e.g., correct bandnames, computable formula, etc...) is automatically checked, and the new index added in the list of available ones for all products allowing its computation at the next MODIStsp execution.</p>
+<p>Provided information (e.g., correct bandnames, computable formula, etc...) is automatically checked upon clicking "Set New Index". On success, the new index is added in the list of available ones for all products allowing its computation. Clicking "Done !" returns to the main.</p>
 
-<h4>
-<a id="download-method" class="anchor" href="#download-method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download Method</h4>
+<h3>
+<a id="download-method" class="anchor" href="#download-method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download Method</h3>
 
 <p>Allows to specify which download method should be used. Available choices are:</p>
 
 <ol>
-<li><p><strong>http</strong>: download through ftp from NASA lpdaac http archive (<a href="http://e4ftl01.cr.usgs.gov">http://e4ftl01.cr.usgs.gov</a>). This requires providing a user name and password, which can be obtained by registrering an account at the address <a href="https://urs.earthdata.nasa.gov/profile">https://urs.earthdata.nasa.gov/profile</a>;</p></li>
+<li><p><strong>http</strong>: download through ftp from NASA lpdaac http archive (<a href="http://e4ftl01.cr.usgs.gov">http://e4ftl01.cr.usgs.gov</a>). This <strong>requires providing a user name and password</strong>, which can be obtained by registrering an account at the address <a href="https://urs.earthdata.nasa.gov/profile">https://urs.earthdata.nasa.gov/profile</a>;</p></li>
 <li><p><strong>ftp</strong>: download from NASA ftp archive (ftp://ladsweb.nascom.nasa.gov/);</p></li>
-<li><p><strong>offline</strong>: process/reprocess HDF files already available on your PC without downloading from NASA -- useful if you have an aexisting archive of HDF images, or to reprocess data already downloaded via MODIStsp (for example, to create time series for an additional layer).</p></li>
+<li><p><strong>offline</strong>: process/reprocess HDF files already available on your PC without downloading from NASA -- useful if you have an aexisting archive of HDF images, or to reprocess data already downloaded via <code>MODIStsp</code> (for example, to create time series for an additional layer).</p></li>
 </ol>
 
 <h3>
@@ -306,8 +274,8 @@ MODIStsp()</pre></div>
 
 <p>Allows to specify the starting and ending dates to be considered for the creation of the time series. Dates <strong>must</strong> be provided in the <em>yyyy--mm--dd</em> format (e.g., 2015-01-31)</p>
 
-<h4>
-<a id="spatial-extent" class="anchor" href="#spatial-extent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spatial Extent</h4>
+<h3>
+<a id="spatial-extent" class="anchor" href="#spatial-extent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spatial Extent</h3>
 
 <p>Allows to define the area of interest for the processing. Two main options are possible:</p>
 
@@ -323,8 +291,8 @@ MODIStsp()</pre></div>
 </li>
 </ol>
 
-<h4>
-<a id="reprojection-and-resize" class="anchor" href="#reprojection-and-resize" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reprojection and Resize</h4>
+<h3>
+<a id="reprojection-and-resize" class="anchor" href="#reprojection-and-resize" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reprojection and Resize</h3>
 
 <p>Allows to specify the options to be used for reprojecting and resizing the MODIS images. In particular:</p>
 
@@ -333,8 +301,8 @@ MODIStsp()</pre></div>
 <li><p>the <strong>"Output Resolution"</strong>, <strong>"Pixel Size"</strong> and <strong>"Reprojection Method"</strong> menus allow to specify whether output images should inherit their spatial resolution from the original MODIS files, or be resampled to a user-defined resolution. In the latter case, output spatial resolution must be specified in the measure units of the selected output projection. At the moment, the resampling method can instead be chosen among "Nearest Neighbour" and "Mode" (Useful for downsampling purposes). Other resampling methods (e.g., bilinear, cubic) are not currently supported since i) they cannot be used for resampling of categorical variables such as the QA and QI layers, and ii) using them on continuous variable (e.g., reflectance, VI values) without performing an a-priori data cleanind would risk to contaminate the values of high-quality observations with those of low-quality ones.</p></li>
 </ol>
 
-<h4>
-<a id="processing-options" class="anchor" href="#processing-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Processing Options</h4>
+<h3>
+<a id="processing-options" class="anchor" href="#processing-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Processing Options</h3>
 
 <p>Allows first of all to specify the <strong>format desired for the output images</strong>. Two of the most commonly formats used in remote sensing applications are available at the moment: ENVI binary and GeoTiff. If GeoTiff is selected, the type of file compression can be also specified among "None", "PACKBITS", "LZW" and "DEFLATE".</p>
 
@@ -342,35 +310,33 @@ MODIStsp()</pre></div>
 
 <p>Finally, you can select if the <strong>NoData values</strong> of MODIS layers should be kept at their original values, or changed to those specified within the "MODIStsp_Products_Opts" XML file. By selecting "Yes" in the "Change Original NODATA values" checkbox, NoData of outputs are set to the largest integer value possible for the data type of the processed layer (e.g., for 8-bit unsigned integer layers, NoData is set always to 255, for 16-bit signed integer layers to 32767, and for 16-bit unsigned integer layers to 65535). Information about the new NoData values is stored both in the output rasters, and in the XML files associated with them.</p>
 
-<h4>
-<a id="main-output-folder-for-time-series-storage" class="anchor" href="#main-output-folder-for-time-series-storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Main Output Folder for Time Series Storage</h4>
+<h3>
+<a id="main-output-folder-for-time-series-storage" class="anchor" href="#main-output-folder-for-time-series-storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Main Output Folder for Time Series Storage</h3>
 
-<p>Allows to specify the main folder where the pre-processed time series data will be saved stored. The <strong>"Reprocess Existing Data"</strong> checkbox allows to specify if images already available should be reprocessed if a new run of MODIStsp is launched with the same output folder. If set to "No", MODIStsp skips dates for which output files following the MODIStsp naming conventions are already present in the output folder. This allows to incrementally extend MODIS time series without reprocessing already available dates.</p>
+<p>Allows to specify the main folder where the pre-processed time series data will be saved stored. The <strong>"Reprocess Existing Data"</strong> checkbox allows to specify if images already available should be reprocessed if a new run of <code>MODIStsp</code> is launched with the same output folder. If set to "No", <code>MODIStsp</code> skips dates for which output files following the <code>MODIStsp</code> naming conventions are already present in the output folder. This allows to incrementally extend MODIS time series without reprocessing already available dates.</p>
 
-<h4>
-<a id="output-folder-for-original-hdf-storage" class="anchor" href="#output-folder-for-original-hdf-storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output Folder for Original HDF Storage</h4>
+<h3>
+<a id="output-folder-for-original-hdf-storage" class="anchor" href="#output-folder-for-original-hdf-storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output Folder for Original HDF Storage</h3>
 
 <p>Allows to specify the folder where downloaded <strong>original MODIS HDF files</strong> are stored. The <strong>"delete original HDF files"</strong> checkbox allows to specify if the downloaded images should be deleted from the file system at the end of the processing. To avoid accidental file deletion, this is always set to "No" by default, and a warning is issued before execution whenever the selection is changed to "Yes".</p>
 
 <h2>
 <a id="non-interactive-execution-and-scheduled-processing" class="anchor" href="#non-interactive-execution-and-scheduled-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Non-Interactive Execution and scheduled processing</h2>
 
-<p>(Exploiting a previously saved options file)</p>
-
-<p>MODIStsp can be also launched in non-interactive mode by setting the optional "GUI" parameter to FALSE, and the "Options_File" parameter to the path of a previously saved Options file. This allows to exploit MODIStsp functionalities within generic "R" processing scripts</p>
+<p><code>MODIStsp</code> can be also launched in non-interactive mode by setting the optional <code>GUI</code> parameter to FALSE, and the "Options_File" parameter to the path of a previously saved Options file. This allows to exploit <code>MODIStsp</code> functionalities within generic "R" processing scripts</p>
 
 <div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">MODIStsp</span>) 
 <span class="pl-c"># --&gt; Specify the path to a valid options file saved in advance</span>
 <span class="pl-v">options_file</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>X:/yourpath/youroptions.json<span class="pl-pds">"</span></span> <span class="pl-c"># generated from the GUI</span>
 MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="pl-c1">FALSE</span>, <span class="pl-v">options_File</span> <span class="pl-k">=</span> <span class="pl-smi">options_file</span>)</pre></div>
 
-<p>Single parameters can be also be directly passed to the MODIStsp() function; for example:</p>
+<p>Single parameters can be also be directly passed to the <code>MODIStsp()</code> function; for example:</p>
 
 <div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">MODIStsp</span>) 
 <span class="pl-v">options_file</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>X:/yourpath/youroptions.json<span class="pl-pds">"</span></span>
 MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="pl-c1">FALSE</span>, <span class="pl-v">options_File</span> <span class="pl-k">=</span> <span class="pl-smi">options_file</span>, <span class="pl-v">download_server</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>ftp<span class="pl-pds">"</span></span>)</pre></div>
 
-<p>will launch MODIStsp with the parameters saved in "X:/yourpath/youroptions.json" options file, with the exception of "download_server" parameter, which is set to "ftp". Details about the parameter names can be found with <code>?MODIStsp</code>.</p>
+<p>will launch <code>MODIStsp</code> with the parameters saved in "X:/yourpath/youroptions.json" options file, with the exception of <code>download_server</code> parameter, which is set to "ftp". Details about the parameter names can be found with <code>?MODIStsp</code>.</p>
 
 <p>Specifying also the "<em>spatial_file_path</em>" parameter overrides the output extent of the selected Options File. This allows to perform the same preprocessing on different extents using a single Options File, by looping on an array of spatial files representing the desired output extents.</p>
 
@@ -387,21 +353,21 @@ MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="
           <span class="pl-v">spatial_file_path</span> <span class="pl-k">=</span> <span class="pl-smi">single_shape</span> )
 }</pre></div>
 
-<h4>
-<a id="standalone-execution-and-scheduled-processing" class="anchor" href="#standalone-execution-and-scheduled-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Standalone execution and scheduled processing</h4>
+<h3>
+<a id="standalone-execution-and-scheduled-processing" class="anchor" href="#standalone-execution-and-scheduled-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Standalone execution and scheduled processing</h3>
 
 <p>MODIStsp can be also executed as a standalone application ; to do it, from R launch the function <code>MODIStsp_install_launcher()</code>. In a Linux operating system this function creates a desktop entry (accessible from the menu in the sections "Science" and "Geography") and a symbolic link in a known path (default: /usr/bin/MODIStsp). In Windows, a link in the Start Menu and optionally a desktop shortcut are created. See <code>?install_MODIStsp_launcher</code> for details and path customisations.</p>
 
-<p>Double-clicking the files or launching them from a shell without parameters launches MODIStsp in interactive mode. Non-interactive mode is triggered by adding the "-g" argument to the call, and specifying the path to a valid Options File as "-s" argument:</p>
+<p>Double-clicking the files or launching them from a shell without parameters launches <code>MODIStsp</code> in interactive mode. Non-interactive mode is triggered by adding the "-g" argument to the call, and specifying the path to a valid Options File as "-s" argument:</p>
 
 <ul>
 <li>  Linux: <code>MODIStsp -g -s "/yourpath/youroptions.RData"</code> (see <code>MODIStsp -h</code> for details).</li>
-<li>  Windows:<code>C:\Users\you\your_r_library\MODIStsp\ExtData\Launcher\MODIStsp.bat -g -s "X:/yourpath/youroptions.RData"</code> (see <code>C:\Users\you\Desktop\MODIStsp -h</code> for details).</li>
+<li>  Windows:<code>your_r_library\MODIStsp\ExtData\Launcher\MODIStsp.bat -g -s "yourpath/youroptions.RData"</code> (see <code>C:\Users\you\Desktop\MODIStsp -h</code> for details).</li>
 </ul>
 
 <p>If you do not want to install any link, launchers can be found in the subdirectory "MODIStsp/ExtData/Launcher" of your library path.</p>
 
-<p>Standalone non-interactive execution can be used to periodically and automatically update the time series of a selected product over a given study area. To do that, you should simply: 1) Open the MODIStsp GUI, define the parameters of the processing specifying a date in the future as the "Ending Date" and save the processing options. Then quit the program</p>
+<p>Standalone non-interactive execution can be used to periodically and automatically update the time series of a selected product over a given study area. To do that, you should simply: 1) Open the <code>MODIStsp</code> GUI, define the parameters of the processing specifying a date in the future as the "Ending Date" and save the processing options. Then quit the program</p>
 
 <ol>
 <li>
@@ -409,7 +375,7 @@ MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="
 
 <ul>
 <li>
-<p>Linux: edit your crontab by opening a terminal and typing</p>
+<p>Linux: edit your crontab by opening a terminal and type:</p>
 
 <div class="highlight highlight-source-shell"><pre>crontab -e</pre></div>
 
@@ -417,7 +383,7 @@ MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="
 
 <div class="highlight highlight-source-shell"><pre>0 23 <span class="pl-k">*</span> <span class="pl-k">*</span> <span class="pl-k">*</span> /bin/bash /usr/bin/MODIStsp -g -s <span class="pl-s"><span class="pl-pds">"</span>/yourpath/youroptions.RData<span class="pl-pds">"</span></span></pre></div>
 </li>
-<li><p>Windows: create a Task following <a href="https://technet.microsoft.com/en-us/library/cc748993.aspx">these instructions</a>; add the path of the MODIStsp.bat launcher as Action (point 6), and specify <code>-g -s "X:/yourpath/youroptions.RData"</code> as argument.</p></li>
+<li><p>Windows: create a Task following <a href="https://technet.microsoft.com/en-us/library/cc748993.aspx">this instructions</a>; add the path of the MODIStsp.bat launcher as Action (point 6), and specify <code>-g -s "X:/yourpath/youroptions.RData"</code> as argument.</p></li>
 </ul>
 </li>
 </ol>
@@ -444,7 +410,7 @@ MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="
 <h1>
 <a id="accessing-and-analyzing-the-processed-time-series-from-r" class="anchor" href="#accessing-and-analyzing-the-processed-time-series-from-r" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accessing and analyzing the processed time series from R</h1>
 
-<p>Preprocessed MODIS data can be retrieved within R scripts either by accessing the single-date raster files, or by loading the saved <em>RasterStack</em> objects. This second option allows accessing the complete data stack and analyzing it using the functionalities for raster/raster time series analysis, extraction and plotting provided for example by the <code>raster</code> or <code>rasterVis</code> packages. <em>MODIStsp</em> provides however an efficient function <em>MODIStsp_extract</em> for extracting time series data at specific locations. The function takes as input a <em>RasterStack</em> object with temporal information created by <em>MODIStsp</em>, the starting and ending dates for the extraction and a standard _Sp*_ object (or an ESRI shapefile name) specifying the locations (points, lines or polygons) of interest, and provides as output a _ <em>xts</em> object containing time series for those locations. If the input is of class <em>SpatialPoints</em>, the output object contains one column for each point specified, and one row for each date. If it is of class <em>SpatialPolygons</em> (or <em>SpatialLines</em>), it contains one column for each polygon (or each line), with values obtained applying the function specified as the "FUN" argument (e.g., mean, standard deviation, etc.) on pixels belonging to the polygon (or touched by the line), and one row for each date.</p>
+<p>Preprocessed MODIS data can be retrieved within R scripts either by accessing the single-date raster files, or by loading the saved <em>RasterStack</em> objects. This second option allows accessing the complete data stack and analyzing it using the functionalities for raster/raster time series analysis, extraction and plotting provided for example by the <code>raster</code> or <code>rasterVis</code> packages. <code>MODIStsp</code> provides however an efficient function <code>_MODIStsp\_extract_</code> for extracting time series data at specific locations. The function takes as input a <em>RasterStack</em> object with temporal information created by <code>MODIStsp</code>, the starting and ending dates for the extraction and a standard _Sp*_ object (or an ESRI shapefile name) specifying the locations (points, lines or polygons) of interest, and provides as output a _ <em>xts</em> object containing time series for those locations. If the input is of class <em>SpatialPoints</em>, the output object contains one column for each point specified, and one row for each date. If it is of class <em>SpatialPolygons</em> (or <em>SpatialLines</em>), it contains one column for each polygon (or each line), with values obtained applying the function specified as the "FUN" argument (e.g., mean, standard deviation, etc.) on pixels belonging to the polygon (or touched by the line), and one row for each date.</p>
 
 <p>As an example the following code:</p>
 
@@ -462,7 +428,14 @@ MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="
   <span class="pl-c"># Plot average time series for the polygons</span>
   plot.xts(<span class="pl-smi">dataavg</span>) </pre></div>
 
-<p>loads a <em>RasterStack</em> object containing 8-days 250 m resolution time series for the 2000-2015 period and extracts time series of average and standard deviation values over the different polygons of a user's selected shapefile on the 2010-2014 period. <a name="gdal_inst"></a></p>
+<p>loads a <em>RasterStack</em> object containing 8-days 250 m resolution time series for the 2000-2015 period and extracts time series of average and standard deviation values over the different polygons of a user's selected shapefile on the 2010-2014 period.</p>
+
+<h1>
+<a id="citation" class="anchor" href="#citation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Citation</h1>
+
+<p>To cite MODIStsp please use:</p>
+
+<p>L. Busetto, L. Ranghetti (2016) MODIStsp: An R package for automatic preprocessing of MODIS Land Products time series, Computers &amp; Geosciences, Volume 97, Pages 40-48, ISSN 0098-3004, <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.020">http://dx.doi.org/10.1016/j.cageo.2016.08.020</a>, URL: <a href="https://github.com/lbusett/MODIStsp">https://github.com/lbusett/MODIStsp</a>.</p>
 
 <h1>
 <a id="installing-r-and-gdal" class="anchor" href="#installing-r-and-gdal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing R and GDAL</h1>
@@ -538,18 +511,18 @@ MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="
 
 <p>Install the packaged binary of GDAL included in your specific distribution; if the version is older than 1.11.1, or if the support for HDF4 format is not included, you can manually install the HDF4 library and compile the source code by adding the parameter <code>--with-hdf4</code> to the <code>configure</code> instruction).</p>
 
-<p><b id="f1">1</b>: If you encounter problems installing the gWidgetsRgtk2 library, please signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of MODIStsp and we'll try to help you!</p>
+<p><b id="f1">1</b>: If you encounter problems installing the gWidgetsRGtk2 library, please signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of <code>MODIStsp</code> and we'll try to help you!</p>
 
-<p><b id="f2">2</b>: At the first execution of <em>MODIStsp</em>, a Welcome screen will appear, signaling that MODIStsp is searching for a valid GDAL installation. Press “ok” and wait for GDAL to be found. If nothing happens for a long time (e.g., several minutes), MODIStsp (and in particular the gdalUtils package on which it relies) is not finding a valid GDAL installation in the more common locations. To solve the problem: 1. Ensure that GDAL is properly installed in your system 2. (On Windows) If it is installed, verify that GDAL is in your system PATH. and that the <em>GDAL_DATA</em> environment variable is correctly set (You can find simple instructions <a href="http://gisforthought.com/setting-up-your-gdal-and-ogr-environmental-variables/">HERE</a>) 3. If nothing works, signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of MODIStsp and we'll try to help!</p>
-        </section>
+<p><b id="f2">2</b>: At the first execution of <code>MODIStsp</code>, a Welcome screen will appear, signaling that <code>MODIStsp</code> is searching for a valid GDAL installation. Press 'ok' and wait for GDAL to be found. If nothing happens for a long time (e.g., several minutes), <code>MODIStsp</code> (and in particular the gdalUtils package on which it relies) is not finding a valid GDAL installation in the more common locations. To solve the problem: 1. Ensure that GDAL is properly installed in your system 2. (On Windows) If it is installed, verify that GDAL is in your system PATH. and that the <em>GDAL_DATA</em> environment variable is correctly set (You can find simple instructions <a href="http://gisforthought.com/setting-up-your-gdal-and-ogr-environmental-variables/">HERE</a>) 3. If nothing works, signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of <code>MODIStsp</code> and we'll try to help!</p>
 
-        <footer>
-          Modistsp is maintained by <a href="https://github.com/lbusett">lbusett</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/lbusett/MODIStsp">Modistsp</a> is maintained by <a href="https://github.com/lbusett">lbusett</a>.</span>
 
-        
-      </div>
-    </div>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
