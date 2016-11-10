@@ -20,11 +20,11 @@
 
     <section class="main-content">
       <ul>
-<li>  <a href="#modistsp">MODIStsp </a><a name="MODIStsp"></a>
+<li>  <a href="#modistsp">MODIStsp</a>
 </li>
 <li>  <a href="#news">News !</a>
 </li>
-<li>  <a href="#installation">Installation </a><a name="Installation"></a>
+<li>  <a href="#installation">Installation</a>
 
 <ul>
 <li>  <a href="#on-windows">On Windows</a>
@@ -61,11 +61,10 @@
 
 
 
-<p><a href="https://travis-ci.org/lbusett/MODIStsp"><img src="https://travis-ci.org/lbusett/MODIStsp.svg?branch=devel" alt="Travis-CI Build Status"></a> <img src="https://img.shields.io/github/release/lbusett/MODIStsp.svg" alt="version"></p>
+<p><a href="https://travis-ci.org/lbusett/MODIStsp"><img src="https://travis-ci.org/lbusett/MODIStsp.svg?branch=master" alt="Travis-CI Build Status"></a> <img src="https://img.shields.io/github/release/lbusett/MODIStsp.svg" alt="version"> <a href="https://zenodo.org/badge/latestdoi/21656836"><img src="https://zenodo.org/badge/21656836.svg" alt="DOI"></a></p>
 
 <h1>
-<a id="modistsp-" class="anchor" href="#modistsp-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MODIStsp <a name="MODIStsp"></a>
-</h1>
+<a id="modistsp" class="anchor" href="#modistsp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MODIStsp</h1>
 
 <p>MODIStsp is a "R" package devoted to automatizing the creation of time series of rasters derived from MODIS Land Products data. MODIStsp allows to perform several preprocessing steps (e.g., download, mosaicking, reprojection and resize) on MODIS data available within a given time period. Users have the ability to select which specific layers of the original MODIS HDF files they want to process. They also can select which additional Quality Indicators should be extracted from the aggregated MODIS Quality Assurance layers and, in the case of Surface Reflectance products, which Spectral Indexes should be computed from the original reflectance bands. For each output layer, outputs are saved as single-band raster files corresponding to each available acquisition date. Virtual files allowing access to the entire time series as a single file can be also created. All processing parameters can be easily selected with a user-friendly GUI, although non-interactive execution exploiting a previously created Options File is possible. Stand-alone execution outside an "R" environment is also possible, allowing to use scheduled execution of MODIStsp to automatically update time series related to a MODIS product and extent whenever a new image is available.</p>
 
@@ -87,7 +86,7 @@
 </li>
 </ul>
 
-<p>MODIStsp v1.3.0 has been finally released. The major improvement consists in now allowing download and preprocessing of <strong>MODIS Collecction 006 datasets</strong>. Other changes concern improvements in the GUI, introduction of off-line functionality and various bug fixing. You can see the changelog [here]. Please report any issues you may encounter in our <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page.:</p>
+<p>MODIStsp v1.3.0 has been finally released. The major improvement consists in now allowing download and preprocessing of <strong>MODIS Collection 006 datasets</strong>. Other changes concern improvements in the GUI, introduction of off-line functionality and various bug fixing. You can see the changelog <a href="https://github.com/lbusett/MODIStsp/releases/tag/v1.3.0">here</a>. Please report any issues you may encounter in our <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page.:</p>
 
 <ul>
 <li>  <strong>11/03/2016 - MODIStsp FAQ</strong>
@@ -97,8 +96,7 @@
 <p>Hints for solving common installation, downloading and processing problems are now provided in our <a href="https://github.com/lbusett/MODIStsp/wiki/">FAQ</a> page.</p>
 
 <h1>
-<a id="installation-" class="anchor" href="#installation-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation <a name="Installation"></a>
-</h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h1>
 
 <p><strong>IMPORTANT:</strong> <em>MODIStsp</em> requires <a href="https://cran.r-project.org">R</a> v &gt;= 3.2.1 and <a href="http://www.gdal.org">GDAL</a> (Geospatial Data Abstraction Library) v &gt;= 1.11.1 To be installed in your system. Brief instructions for installing R and GDAL can be found <a href="#gdal_inst">HERE</a>.</p>
 
@@ -112,7 +110,7 @@
 <div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>gWidgetsRGtk2<span class="pl-pds">"</span></span>)
 library(<span class="pl-smi">gWidgetsRGtk2</span>)</pre></div>
 
-<p>Upon loading the package, an error window will probably appear. <strong>Don't worry!</strong> This is just signaling that <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library "GTK+ is not yet installed on your system and needs to be installed. To do so, press "OK". A new window dialog window will appear, asking if you want to install "GTK+". Select "Install GTK" and then "OK". Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go!<sup name="a1"><a href="#f1">1</a></sup></p>
+<p>Upon loading the package, an error window will probably appear. <strong>Don't worry!</strong> This is just signaling that <em>libatk-1.0-0.dll</em> is missing from your system. This is due to the fact that library "GTK+" is not yet installed on your system and needs to be installed. To do so, press "OK". A new window dialog window will appear, asking if you want to install "GTK+". Select "Install GTK" and then "OK" . Windows will download and install the GTK+ library. When it finishes, the RSession will be restarted and you should be ready to go!<sup name="a1"><a href="#f1">1</a></sup></p>
 
 <ol>
 <li> Install MODIStsp package from GitHub. (You'll need to have the "devtools" package installed and loaded)</li>
@@ -513,7 +511,7 @@ MODIStsp(<span class="pl-v">gui</span> <span class="pl-k">=</span> <span class="
 
 <p><b id="f1">1</b>: If you encounter problems installing the gWidgetsRGtk2 library, please signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of <code>MODIStsp</code> and we'll try to help you!</p>
 
-<p><b id="f2">2</b>: At the first execution of <code>MODIStsp</code>, a Welcome screen will appear, signaling that <code>MODIStsp</code> is searching for a valid GDAL installation. Press 'ok' and wait for GDAL to be found. If nothing happens for a long time (e.g., several minutes), <code>MODIStsp</code> (and in particular the gdalUtils package on which it relies) is not finding a valid GDAL installation in the more common locations. To solve the problem: 1. Ensure that GDAL is properly installed in your system 2. (On Windows) If it is installed, verify that GDAL is in your system PATH. and that the <em>GDAL_DATA</em> environment variable is correctly set (You can find simple instructions <a href="http://gisforthought.com/setting-up-your-gdal-and-ogr-environmental-variables/">HERE</a>) 3. If nothing works, signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of <code>MODIStsp</code> and we'll try to help!</p>
+<p><b id="f2">2</b>: At the first execution of <code>MODIStsp</code>, a Welcome screen will appear, signaling that <code>MODIStsp</code> is searching for a valid GDAL installation. Press "ok" and wait for GDAL to be found. If nothing happens for a long time (e.g., several minutes), <code>MODIStsp</code> (and in particular the gdalUtils package on which it relies) is not finding a valid GDAL installation in the more common locations. To solve the problem: 1. Ensure that GDAL is properly installed in your system 2. (On Windows) If it is installed, verify that GDAL is in your system PATH. and that the <em>GDAL_DATA</em> environment variable is correctly set (You can find simple instructions <a href="http://gisforthought.com/setting-up-your-gdal-and-ogr-environmental-variables/">HERE</a>) 3. If nothing works, signal it in the <a href="https://github.com/lbusett/MODIStsp/issues">issues</a> GitHub page of <code>MODIStsp</code> and we'll try to help!</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/lbusett/MODIStsp">Modistsp</a> is maintained by <a href="https://github.com/lbusett">lbusett</a>.</span>
